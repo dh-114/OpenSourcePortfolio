@@ -1,0 +1,133 @@
+/* 仅供学习 */
+/* Moieo */
+/* 通用组件 */
+@import "component.css";
+
+/* 取消默认页边距 */
+html,
+body {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #eef5f9;
+}
+
+/* 登录界面容器 */
+.container {
+  display: flex;
+  width: 70vw;
+  height: 38vw;
+  flex: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* 阴影 */
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1), -2px -2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 1s;
+}
+
+/* 左半部分 */
+.left {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: rgba(121, 106, 238, 0.9);
+  width: 40%;
+}
+
+.left-content {
+  margin-left: 10%;
+}
+
+.left .title {
+  color: #eef5f9;
+}
+
+.left .sub-title {
+  color: #eef5f9;
+  font-weight: 300;
+}
+
+/* 右半部分 */
+.right {
+  flex: 1;
+  height: 100%;
+  /* background-color: aquamarine; */
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 表单容器 */
+.form-container {
+  width: 300px;
+}
+
+.form-container > *:nth-child(n) {
+  margin-top: 18px;
+}
+
+.nopassword {
+  font-weight: 300;
+}
+
+.form-container .input-online {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.bottom-options {
+  margin-top: 10px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* 移动端 */
+@media screen and (max-width: 760px) {
+  .container {
+    display: block;
+    top: 60vw;
+    width: 80vw;
+    height: 95vw;
+  }
+  /* 左半部分 */
+  .left {
+    width: 100%;
+    height: 40%;
+    flex: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .left-content {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .right {
+    width: 100%;
+    height: 60%;
+    flex: none;
+  }
+}
+
+/* 底部版权栏 */
+.copyright {
+  z-index: 0;
+  font-weight: 300;
+  position: fixed;
+  left: 50vw;
+  transform: translateX(-50%);
+  bottom: 4vw;
+}

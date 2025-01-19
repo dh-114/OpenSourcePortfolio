@@ -1,10 +1,11 @@
+ 
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>初次配置</title>
-    <style>
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -79,49 +80,83 @@
 </head>
 <body>
 <div class="container">
-    <h1>初次配置</h1>
-    <p>初次见面首先让我们进行一下简单的配置吧</p>
+    <h1>欢迎配置</h1>
+    <p>为了更好地使用本系统，请先完成以下配置。</p>
     <form id="configForm" action="api/first.php" method="post">
-        <p>设置登录信息（此信息务必认真保存）</p>
+        <p><strong>登录信息</strong>（请妥善保存）</p>
         <br>
         用户名: <input type="text" name="name" required><br>
         密码: <input type="password" name="password" required><br>
 
-        <p>设置数据库配置（这些可以在从服务器提供商那里获得）</p>
-        <p>这个程序仅支持MySQL数据库</p>
+        <p><strong>数据库配置</strong>（可以从服务器提供商获取）</p>
+        <p>当前仅支持MySQL数据库。</p>
         <br>
-        数据库地址（服务器IP）: <input type="text" name="msip" required><br>
-        数据库登录用户名: <input type="text" name="msuser" required><br>
-        数据库登录密码: <input type="text" name="mspw" required><br>
-        数据库名称: <input type="text" name="msname" required><br>
-        <input type="submit" value="提交">
+        数据库地址: <input type="text" name="sqlip" required><br>
+        数据库用户名: <input type="text" name="sqluser" required><br>
+        数据库密码: <input type="text" name="sqlpw" ><br>
+        数据库名称: <input type="text" name="sqlname" required><br>
+        <input type="submit" value="确认提交">
     </form>
     <div id="errorMessages" class="error"></div>
 </div>
 
 <script>
-    document.getElementById('configForm').addEventListener('submit', function(event) {
-        const form = event.target;
-        let isValid = true;
-        const errorMessages = [];
-        
-        // 清除之前的错误信息
-        document.getElementById('errorMessages').innerHTML = '';
 
-        // 检查每个必填字段
-        for (const element of form.elements) {
-            if (element.required && !element.value.trim()) {
-                isValid = false;
-                errorMessages.push(`${element.name} 不能为空`);
+//js代码由同义ai生成
+
+        document.getElementById('configForm').addEventListener('submit', function(event) {
+            const form = event.target;
+            let isValid = true;
+            const errorMessages = [];
+
+            // 清除之前的错误信息
+            document.getElementById('errorMessages').innerHTML = '';
+
+            // 检查每个必填字段
+            for (const element of form.elements) {
+                if (element.required && !element.value.trim()) {
+                    isValid = false;
+                    errorMessages.push(`${element.name} 不能为空`);
+                }
             }
-        }
 
-        // 如果有错误信息，显示出来并阻止表单提交
-        if (!isValid) {
-            document.getElementById('errorMessages').innerHTML = errorMessages.join('<br>');
-            event.preventDefault();
+            // 自定义验证逻辑
+            const password = form.password.value.trim();
+            if (password.length < 8) {
+                isValid = false;
+                errorMessages.push('密码长度至少为8个字符');
+            }
+
+           
+
+            // 检查XSS攻击
+            const fieldsToCheck = ['name', 'password', 'sqlip', 'sqluser', 'sqlpw', 'sqlname'];
+            for (const fieldName of fieldsToCheck) {
+                const fieldValue = form[fieldName].value.trim();
+                if (/[\x00-\x20\x7F-\xFF"'><&]/.test(fieldValue)) {
+                    isValid = false;
+                    errorMessages.push(`字段 ${fieldName} 包含非法字符`);
+                }
+            }
+
+            // 如果有错误信息，显示出来并阻止表单提交
+            if (!isValid) {
+                document.getElementById('errorMessages').innerHTML = errorMessages.join('<br>');
+                event.preventDefault();
+            }
+        });
+
+        // 转义输出函数
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
         }
-    });
+    
 </script>
 </body>
 </html>
+ 

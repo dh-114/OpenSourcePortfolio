@@ -1,15 +1,14 @@
 <?php
-$servername = "192.168.1.21";
-$username = "root";
-$password = "114514"; // 替换为实际的密码
-$dbname = "OSP";
-
+$ip = "127.0.0.1";
+$user_name = "root";
+$password = "";
+$dbname = "osp";
 // 创建连接
-$conn = new mysqli($servername, $username, $password, $dbname);
-
+$conn = new mysqli($ip, $user_name, $password, $dbname);
 // 检查连接
-if ($conn->connect_error) {
-    die("数据库连接失败: " . $conn->connect_error);
+if ($conn->connect_error)
+{
+    //    die("数据库连接失败: " . $conn->connect_error);
 }
-echo "数据库连接成功";
+//echo "数据库连接成功";
 ?>

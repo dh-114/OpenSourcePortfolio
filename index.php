@@ -1,7 +1,8 @@
+<?php include 'admin/api/data.php' ; ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
-		<title>宇柒云阁 | yuqiee.com</title>   
+		<?php echo '<title>'."$web_title".'</title>'; ?>
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 		<meta name="KEYWords" contect="宇柒云阁团队,个人主页,个人引导页">
 		<meta name="DEscription" contect="宇柒云阁的个人引导页">
@@ -24,8 +25,8 @@
 			<div class="content"><!-- 内容开始 -->
 				<section class="home-me-section active-section"><!-- 首页开始 -->
 					<div class="main"><!-- 首页内容 -->
-						<img src="img/bgo.jpg" class="bgo" />
-						<img src="https://q1.qlogo.cn/g?b=qq&nk=2958613932&s=640" class="ato" onclick="alert('戳我干嘛 ￣へ￣')" />
+                        <?php echo '<img src="' . $web_bg . '" class="bgo" />'; ?>
+                        <?php echo '<img src="'. $web_head . '" class="ato" onclick="alert('."$web_head_txt".')" />' ;?>
 						<div class="name" >宇柒</div>
 						<div class="motto" >爱我中华www.yuqiee.com</div>
 					

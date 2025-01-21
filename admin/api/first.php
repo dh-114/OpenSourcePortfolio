@@ -114,7 +114,7 @@ if ($conn->query($sql) === TRUE) {
     echo "用户名与密码插入到 user 表 错误: " . $conn->error . "<br>";
 }
 
-$sql = "INSERT INTO user (name, password) VALUES ('$user_name', '$user_password')";
+$sql = "INSERT INTO information (name, password) VALUES ('$user_name', '$user_password')";
 if ($conn->query($sql) === TRUE) {
     echo "用户名与密码成功插入到 user 表";
 } else {

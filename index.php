@@ -26,9 +26,10 @@
 				<section class="home-me-section active-section"><!-- 首页开始 -->
 					<div class="main"><!-- 首页内容 -->
                         <?php echo '<img src="' . $web_bg . '" class="bgo" />'; ?>
-                        <?php echo '<img src="'. $web_head . '" class="ato" onclick="alert('."$web_head_txt".')" />' ;?>
-						<div class="name" >宇柒</div>
-						<div class="motto" >爱我中华www.yuqiee.com</div>
+                        <?php echo '<img src="'. $user_head . '" class="ato" onclick="alert('."$user_head_txt".')" />' ;?>
+						<div class="name" ><?php echo "$user_name"; ?></div>
+						<div class="motto" ><?php echo "$user_sign"; ?>
+                        <?php echo "$web_index_url"; ?></div>
 					
 					</div><!-- 首页内容结束 -->
 					</section><!-- 首页结束 -->

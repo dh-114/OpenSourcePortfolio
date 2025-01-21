@@ -1,33 +1,27 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 	<head>
-		<title>宇柒云阁 | yuqiee.com</title>   
+		<title>osp后台</title>   
 		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-		<meta name="KEYWords" contect="宇柒云阁团队,个人主页,个人引导页">
-		<meta name="DEscription" contect="宇柒云阁的个人引导页">
-		<meta name="Author" contect="宇柒云阁团队">
+
 		<meta name="Robots" contect= "all">
 		<link rel="stylesheet"  href="../style.css">
 	</head>
 	<body>
-		<div class="container"><!-- 主体开始 -->
-			<div class="hander"><!-- 导航开始 -->
+		<div class="container">
+			<div class="hander">
 				<nav id="nav-menu">
-					<a href="#" data-rel="home-me-section" class="active">首页</a>
-					<a href="#" data-rel="about-exp-section">联系</a>
-					<a href="#" data-rel="course-exp-section">历程</a>
-					<a href="#" data-rel="website-exp-section">站点</a>
-                    <a href="#" data-rel="website-exp-FriendshipChain">友链</a>
-                    <a href="#" data-rel="website-exp-leaveAMessage">留言</a>
+					<a href="#" data-rel="home-me-section" class="active">首页设置</a>
+					<a href="#" data-rel="about-exp-section">联系设置</a>
+					<a href="#" data-rel="course-exp-section">历程设置</a>
+					<a href="#" data-rel="website-exp-section">站点设置</a>
+                    <a href="#" data-rel="website-exp-FriendshipChain">友链设置</a>
+                    <a href="#" data-rel="website-exp-leaveAMessage">留言查看</a>
 					</nav>
-				</div><!-- 导航结束 -->
-			<div class="content"><!-- 内容开始 -->
+				</div>
+			<div class="content">
 				<section class="home-me-section active-section"><!-- 首页开始 -->
-					<div class="main"><!-- 首页内容 -->
-						<img src="img/bgo.jpg" class="bgo" />
-						<img src="https://q1.qlogo.cn/g?b=qq&nk=2958613932&s=640" class="ato" onclick="alert('戳我干嘛 ￣へ￣')" />
-						<div class="name" >宇柒</div>
-						<div class="motto" >爱我中华www.yuqiee.com</div>
+					<div class="main">
 					
 					</div><!-- 首页内容结束 -->
 					</section><!-- 首页结束 -->

@@ -126,7 +126,16 @@
                 isValid = false;
                 errorMessages.push('密码长度至少为8个字符');
             }
-
+        
+// 检查密码复杂度
+const hasUppercase = /[A-Z]/.test(password);
+const hasLowercase = /[a-z]/.test(password);
+const hasNumber = /\d/.test(password);
+const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+if (!hasUppercase || !hasLowercase || !hasNumber || !hasSpecialChar) {
+    isValid = false;
+    errorMessages.push('密码必须包含大写字母、小写字母、数字和特殊字符');
+}
            
 
             // 检查XSS攻击

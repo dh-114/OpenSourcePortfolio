@@ -5,6 +5,11 @@
 </head>
 <body>
 <?php
+$filename = '../config.php';
+
+if(file_exists($filename)){
+    die ("配置文件已存在");
+} 
 $user_name = htmlspecialchars(trim($_POST["name"]), ENT_QUOTES, 'UTF-8');
 $user_password = trim($_POST["password"]);
 $sql_ip = filter_var($_POST["sqlip"], FILTER_VALIDATE_IP);
@@ -113,13 +118,18 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "用户名与密码插入到 user 表 错误: " . $conn->error . "<br>";
 }
-
-$sql = "INSERT INTO information (name, password) VALUES ('$user_name', '$user_password')";
-if ($conn->query($sql) === TRUE) {
-    echo "用户名与密码成功插入到 user 表";
+echo "开始初始化网站默认数据";
+$web_title="$user_name".'的个人网站';
+$sql = "INSERT INTO information (name, data) VALUES ('web_title', '$web_title');";
+$sql .= "INSERT INTO information (name, data) VALUES ('web_bg', '../../img/bgo.jpg');";
+ 
+if ($conn->multi_query($sql) === TRUE) {
+    echo "网站数据插入成功";
 } else {
-    echo "用户名与密码插入到 user 表 错误: " . $conn->error . "<br>";
+    echo "Error: " . $sql . "<br>" . $conn->error;
 }
+ 
+$conn->close();
 
 $myfile = fopen("../config.php", "w") or die("Unable to open file!");
 $txt = <<<str

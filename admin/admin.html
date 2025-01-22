@@ -1,0 +1,105 @@
+<!-- 当前网页源码均收集于 webcat 中共享空间 -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 - OpenSourcePortfolio</title>
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 左边版块 -->
+      <div class="left">
+        <div class="left-content">
+          <h1 class="title">登录</h1>
+          <p class="sub-title">OpenSourcePortfolio 控制面板</p>
+        </div>
+      </div>
+      <!-- 右边板块 -->
+      <div class="right">
+        <form action="api/log.php" method="post" id="form">
+          <div class="form-container">
+            <div class="input-online">
+              <input type="text" id="name" name="name" required />
+              <span>用户名</span>
+            </div>
+
+            <div class="input-online">
+              <input type="password" id="password"name="password" required />
+              <span>密码</span>
+            </div>
+
+            <div class="mx-button">
+              <input type="submit" value="登录" />
+            </div>
+            <div id="errorMessages"></div>
+            <div class="bottom-options">
+              
+              <a class="mx-link" href="javascript:;">忘记密码</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script>
+
+//js代码由同义ai生成
+
+        document.getElementById('form').addEventListener('submit', function(event) {
+            const form = event.target;
+            let isValid = true;
+            const errorMessages = [];
+
+            // 清除之前的错误信息
+            document.getElementById('errorMessages').innerHTML = '';
+
+            // 检查每个必填字段
+            for (const element of form.elements) {
+                if (element.required && !element.value.trim()) {
+                    isValid = false;
+                    errorMessages.push(`${element.name} 不能为空`);
+                }
+            }
+
+            // 自定义验证逻辑
+            const password = form.password.value.trim();
+            if (password.length < 8) {
+                isValid = false;
+                errorMessages.push('密码长度至少为8个字符');
+            }
+        
+
+           
+
+            // 检查XSS攻击
+            const fieldsToCheck = ['name', 'password'];
+            for (const fieldName of fieldsToCheck) {
+                const fieldValue = form[fieldName].value.trim();
+                if (/[\x00-\x20\x7F-\xFF"'><&]/.test(fieldValue)) {
+                    isValid = false;
+                    errorMessages.push(`字段 ${fieldName} 包含非法字符`);
+                }
+            }
+
+            // 如果有错误信息，显示出来并阻止表单提交
+            if (!isValid) {
+                document.getElementById('errorMessages').innerHTML = errorMessages.join('<br>');
+                event.preventDefault();
+            }
+        });
+
+        // 转义输出函数
+        function escapeHtml(unsafe) {
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    
+</script>
+</html>

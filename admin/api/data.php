@@ -1,5 +1,5 @@
 <?php
-require '../config.php';
+require 'admin/config.php';
 $web_title="标题";
 $web_bg="img/1.png";
 $user_head="https://q1.qlogo.cn/g?b=qq&nk=721257030&s=640";

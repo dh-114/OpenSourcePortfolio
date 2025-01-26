@@ -114,17 +114,22 @@ echo "数据库连接成功"."<br>";
 
 $sql = "INSERT INTO user (name, password) VALUES ('$user_name', '$user_password')";
 if ($conn->query($sql) === TRUE) {
-    echo "用户名与密码成功插入到 user 表";
+    echo "用户名与密码成功插入到 user 表"."<br>";
 } else {
     echo "用户名与密码插入到 user 表 错误: " . $conn->error . "<br>";
 }
-echo "开始初始化网站默认数据";
-$web_title="$user_name".'的个人网站';
+echo "开始初始化网站默认数据"."<br>";
+$web_title="$user_name".'的个人引导页';
 $sql = "INSERT INTO information (name, data) VALUES ('web_title', '$web_title');";
 $sql .= "INSERT INTO information (name, data) VALUES ('web_bg', '../../img/bgo.jpg');";
- 
+$sql .= "INSERT INTO information (name, data) VALUES ('user_head', 'https://q1.qlogo.cn/g?b=qq&nk=721257030&s=640');";
+$sql .= "INSERT INTO information (name, data) VALUES ('user_head_txt', '这是头像点击后的文字，你可以在后台更改。');";
+$sql .= "INSERT INTO information (name, data) VALUES ('user_name', '$user_name');";
+$sql .= "INSERT INTO information (name, data) VALUES ('user_sign', '你的个性签名');";
+$sql .= "INSERT INTO information (name, data) VALUES ('web_index_url', '网站的URL');";
+
 if ($conn->multi_query($sql) === TRUE) {
-    echo "网站数据插入成功";
+    echo "网站数据插入成功"."<br>";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
@@ -148,7 +153,12 @@ if (\$conn->connect_error)
 //echo "数据库连接成功";
 ?>
 str;
-fwrite($myfile, $txt);
+if (fwrite($myfile, $txt)===false){
+    echo "配置文件生成失败，请检查文件权限并清空数据库后重新填写表单。"."<br>";
+}else{
+   echo "配置文件生成成功"."<br>"; 
+}
+
 fclose($myfile);
 //   echo "$UserName"."$UserPassword";
 // 关闭连接

@@ -1,4 +1,9 @@
- 
+<?php
+$filename="config.php";
+if(file_exists($filename)){
+    die ("配置文件已存在");
+} 
+?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>

@@ -2,7 +2,7 @@
 $ip = "127.0.0.1";
 $user_name = "root";
 $password = "";
-$dbname = "web";
+$dbname = "osp";
 // 创建连接
 $conn = new mysqli($ip, $user_name, $password, $dbname);
 // 检查连接
